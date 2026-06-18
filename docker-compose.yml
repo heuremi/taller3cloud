@@ -1,0 +1,30 @@
+services:
+  localstack:
+    image: localstack/localstack:3
+    container_name: drive-clone-localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3
+      - DEBUG=0
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4566/_localstack/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: drive-clone-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - S3_ENDPOINT=http://localstack:4566
+      - S3_BUCKET=${S3_BUCKET:-drive-clone-bucket}
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+      - AWS_DEFAULT_REGION=us-east-1
+    depends_on:
+      - localstack
