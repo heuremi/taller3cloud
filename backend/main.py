@@ -122,11 +122,6 @@ def download_file(key: str):
         headers={"Content-Disposition": f"attachment; filename*=UTF-8''{quoted}"},
     )
 
-
-@app.get("/api/health")
-def health():
-    return {"status": "ok", "bucket": S3_BUCKET, "endpoint": S3_ENDPOINT}
-
 frontend_dir = os.getenv("FRONTEND_DIR", "frontend")
 if os.path.isdir(frontend_dir):
     app.mount("/", StaticFiles(directory=frontend_dir, html=True), name="frontend")
