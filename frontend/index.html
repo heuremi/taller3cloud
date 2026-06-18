@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drive Clone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Drive Clone</h1>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <h2>Carga de documentos</h2>
+
+      <div id="dropzone" class="dropzone">
+        <p class="dropzone-title">Arrastra y suelta tus archivos</p>
+        <p class="dropzone-hint">o haz clic para seleccionar</p>
+      </div>
+
+      <input id="file-input" type="file" multiple hidden>
+
+      <ul id="staged-list" class="staged-list"></ul>
+
+      <button id="upload-btn" class="btn-primary" disabled>Cargar archivos</button>
+      <p id="status" class="status"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Archivos recientes</h2>
+      <ul id="files-list" class="files-list">
+        <li class="empty">Aún no has subido archivos.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
