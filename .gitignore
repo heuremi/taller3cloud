@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/crash.log
+volume/
+.localstack/
+.DS_Store
